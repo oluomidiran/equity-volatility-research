@@ -1,0 +1,275 @@
+{
+  "synthetic": {
+    "note": "SYNTHETIC DATA. Illustrative only; no conclusion depends on it.",
+    "summary": {
+      "total_return": {
+        "HIGH_VOL": -0.270898,
+        "LOW_VOL": 0.314995
+      },
+      "ann_return_arithmetic": {
+        "HIGH_VOL": -0.120122,
+        "LOW_VOL": 0.141095
+      },
+      "ann_return_geometric": {
+        "HIGH_VOL": -0.141713,
+        "LOW_VOL": 0.141621
+      },
+      "ann_volatility": {
+        "HIGH_VOL": 0.255644,
+        "LOW_VOL": 0.131404
+      },
+      "sharpe_rf0": {
+        "HIGH_VOL": -0.554336,
+        "LOW_VOL": 1.077754
+      },
+      "sharpe_rf4": {
+        "HIGH_VOL": -0.710804,
+        "LOW_VOL": 0.773348
+      }
+    }
+  },
+  "apple_returns": {
+    "total_return": 0.101254841391891,
+    "ann_arithmetic": 0.07755110294968073,
+    "ann_geometric": 0.04930669113592345,
+    "ann_volatility": 0.24266164934806872,
+    "volatility_drag": 0.02944233803216253,
+    "sharpe_rf0": 0.20319111515309526,
+    "sharpe_rf4": 0.03835254215458715
+  },
+  "apple_strategy": {
+    "unlagged_lookahead_total": 1.9311429320144198,
+    "lagged_gross_total": 0.2792644957760182,
+    "lagged_net_total": 0.21809151969483143,
+    "mean_reversion_net_total": -0.1622496786071863,
+    "buyhold_total": 0.100254841391891,
+    "trades": 49,
+    "lookahead_overstatement_pp": 165.18784362384017
+  },
+  "cost_sensitivity": {
+    "benchmark_crossover_bps": 32.0,
+    "zero_return_bps": 51.00000000000001,
+    "grid": [
+      {
+        "cost_bps": 0.0,
+        "net_return": 0.279264,
+        "buyhold_return": 0.101255,
+        "beats_benchmark": true
+      },
+      {
+        "cost_bps": 5.0,
+        "net_return": 0.248311,
+        "buyhold_return": 0.100755,
+        "beats_benchmark": true
+      },
+      {
+        "cost_bps": 10.0,
+        "net_return": 0.218092,
+        "buyhold_return": 0.100255,
+        "beats_benchmark": true
+      },
+      {
+        "cost_bps": 20.0,
+        "net_return": 0.159787,
+        "buyhold_return": 0.099255,
+        "beats_benchmark": true
+      },
+      {
+        "cost_bps": 30.0,
+        "net_return": 0.104219,
+        "buyhold_return": 0.098255,
+        "beats_benchmark": true
+      },
+      {
+        "cost_bps": 40.0,
+        "net_return": 0.051261,
+        "buyhold_return": 0.097255,
+        "beats_benchmark": false
+      },
+      {
+        "cost_bps": 50.0,
+        "net_return": 0.000794,
+        "buyhold_return": 0.096255,
+        "beats_benchmark": false
+      },
+      {
+        "cost_bps": 75.0,
+        "net_return": -0.115219,
+        "buyhold_return": 0.093755,
+        "beats_benchmark": false
+      },
+      {
+        "cost_bps": 100.0,
+        "net_return": -0.218026,
+        "buyhold_return": 0.091255,
+        "beats_benchmark": false
+      }
+    ]
+  },
+  "cross_stock": {
+    "trades": {
+      "MSFT": 292,
+      "IBM": 295,
+      "SBUX": 319,
+      "AAPL": 269
+    },
+    "gross_total": {
+      "MSFT": -0.068007,
+      "IBM": -0.24363,
+      "SBUX": 0.07957,
+      "AAPL": 4.711627
+    },
+    "net_total": {
+      "MSFT": -0.304147,
+      "IBM": -0.437019,
+      "SBUX": -0.215245,
+      "AAPL": 3.364688
+    },
+    "buyhold_total": {
+      "MSFT": 1.194343,
+      "IBM": 0.66782,
+      "SBUX": 2.716724,
+      "AAPL": 8.066693
+    },
+    "net_beats_benchmark": {
+      "MSFT": false,
+      "IBM": false,
+      "SBUX": false,
+      "AAPL": false
+    }
+  },
+  "regimes": {
+    "crisis_2007_2009": {
+      "strategy": {
+        "MSFT": -0.492123,
+        "IBM": -0.319853,
+        "SBUX": -0.462541,
+        "AAPL": 0.083779
+      },
+      "buyhold": {
+        "MSFT": -0.470919,
+        "IBM": -0.272439,
+        "SBUX": -0.684351,
+        "AAPL": -0.458461
+      }
+    },
+    "recovery_2009_2016": {
+      "strategy": {
+        "MSFT": 0.416205,
+        "IBM": -0.201299,
+        "SBUX": 0.727743,
+        "AAPL": 1.791267
+      },
+      "buyhold": {
+        "MSFT": 3.163034,
+        "IBM": 0.874333,
+        "SBUX": 14.846405,
+        "AAPL": 8.142976
+      }
+    }
+  },
+  "volatility_range": {
+    "min": {
+      "MSFT": 0.078261,
+      "IBM": 0.070686,
+      "SBUX": 0.093566,
+      "AAPL": 0.072477
+    },
+    "mean": {
+      "MSFT": 0.259245,
+      "IBM": 0.207219,
+      "SBUX": 0.300135,
+      "AAPL": 0.304453
+    },
+    "max": {
+      "MSFT": 1.013595,
+      "IBM": 0.687526,
+      "SBUX": 1.033004,
+      "AAPL": 1.157862
+    },
+    "max_over_min": {
+      "MSFT": 12.951428,
+      "IBM": 9.72643,
+      "SBUX": 11.040426,
+      "AAPL": 15.975492
+    },
+    "max_date": {
+      "MSFT": "2008-10-28",
+      "IBM": "2008-11-24",
+      "SBUX": "2008-11-25",
+      "AAPL": "2008-10-15"
+    }
+  },
+  "autocorrelation": {
+    "returns_lag1": {
+      "MSFT": -0.058745,
+      "IBM": -0.016223,
+      "SBUX": -0.029376,
+      "AAPL": -0.00328
+    },
+    "abs_returns_lag1": {
+      "MSFT": 0.227258,
+      "IBM": 0.215498,
+      "SBUX": 0.205486,
+      "AAPL": 0.232086
+    },
+    "volatility_lag1": {
+      "MSFT": 0.985166,
+      "IBM": 0.986382,
+      "SBUX": 0.989725,
+      "AAPL": 0.988374
+    },
+    "volatility_lag21": {
+      "MSFT": 0.569864,
+      "IBM": 0.579973,
+      "SBUX": 0.67342,
+      "AAPL": 0.578692
+    },
+    "volatility_lag63": {
+      "MSFT": 0.491481,
+      "IBM": 0.405618,
+      "SBUX": 0.533147,
+      "AAPL": 0.392412
+    }
+  },
+  "target_integrity": {
+    "overlapping_target": {
+      "random_walk": 0.022146,
+      "historical_mean": 0.14541,
+      "ewma_squared_returns": 0.040417,
+      "ewma_std_adjust_false": 0.039253,
+      "ewma_std_adjust_true": 0.039229
+    },
+    "forward_target": {
+      "random_walk": 0.133723,
+      "historical_mean": 0.150433,
+      "ewma_squared_returns": 0.120436,
+      "ewma_std_adjust_false": 0.122968,
+      "ewma_std_adjust_true": 0.124072
+    }
+  },
+  "har": {
+    "n_train": 1563,
+    "n_purged": 21,
+    "n_test": 679,
+    "train_end": "2013-04-19",
+    "test_start": "2013-05-21",
+    "test_end": "2016-01-29",
+    "coefficients": {
+      "intercept": 0.127169,
+      "beta_daily": 0.02477,
+      "beta_weekly": 0.169933,
+      "beta_monthly": 0.435532
+    },
+    "max_solver_difference": 2.7755575615628914e-16,
+    "rmse": {
+      "HAR (purged)": 0.090777,
+      "EWMA (\u03bb=0.94)": 0.092953,
+      "Random walk": 0.102804
+    },
+    "rmse_unpurged": 0.090266,
+    "leakage_effect_pp": 0.0511,
+    "improvement_vs_ewma_pct": 2.341,
+    "improvement_vs_rw_pct": 11.7
+  }
+}
