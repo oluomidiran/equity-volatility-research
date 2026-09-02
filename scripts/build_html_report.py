@@ -364,12 +364,12 @@ h1#references, h1#appendix-reproduction {
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<title>Equity Volatility Research: Forecasting and Strategy Backtesting</title>
+<title>Equity Volatility Research Pipeline</title>
 <style>{css}</style></head>
 <body>
-<h1 class="doctitle">Equity Volatility Research:<br>Forecasting and Strategy Backtesting</h1>
+<h1 class="doctitle">Equity Volatility Research Pipeline</h1>
 <p class="byline">Oluwaferanmi A. Omidiran</p>
-<p class="dateline">Realized volatility measurement, strategy backtesting, and out-of-sample forecasting in Python</p>
+<p class="dateline">Strategy Backtesting, Market Regime Analysis, and Forecasting with Out-of-Sample Validation in Python</p>
 <hr class="titlerule">
 {toc}
 {body}

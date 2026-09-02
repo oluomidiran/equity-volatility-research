@@ -1,0 +1,12 @@
+# GitHub Linguist counts bytes, so the generated report files (which embed
+# figures and rendered equations as base64) would otherwise dominate the
+# language statistics and label this a "HTML" project. Mark generated
+# documentation and data so the reported language reflects the source code.
+
+report/*.html   linguist-documentation
+report/*.md     linguist-documentation
+report/*.docx   linguist-documentation
+report/*.pdf    linguist-documentation
+results/**      linguist-generated
+data/*.csv      linguist-generated
+*.ipynb         linguist-documentation

@@ -33,10 +33,12 @@ TBL_BORDERS = (
 
 def build() -> Path:
     subprocess.run(
-        ["pandoc", str(MD), "-o", str(OUT), "--toc", "--toc-depth=2",
+        ["pandoc", str(MD), "-o", str(OUT),
          f"--resource-path={ROOT/'report'}:{ROOT}:{FIGS}"],
         check=True,
     )
+
+    PAGE_BREAK = ('<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
 
     tmp = OUT.with_suffix(".tmp.docx")
     with zipfile.ZipFile(OUT) as zin, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
@@ -47,6 +49,10 @@ def build() -> Path:
                 # give every table a ruled top/bottom and light interior rows
                 xml = re.sub(r"(<w:tblPr>)(?!.*?<w:tblBorders>)", r"\1" + TBL_BORDERS,
                              xml, flags=re.S)
+                # start Contents, References and Appendix on fresh pages
+                for anchor in ("contents", "data", "references", "appendix-reproduction"):
+                    pat = r'(<w:bookmarkStart w:id="\d+" w:name="' + anchor + r'" />)'
+                    xml = re.sub(pat, PAGE_BREAK + r"\1", xml, count=1)
                 data = xml.encode("utf-8")
             zout.writestr(item, data)
     shutil.move(tmp, OUT)

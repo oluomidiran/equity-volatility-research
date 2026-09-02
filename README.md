@@ -1,4 +1,6 @@
-# Equity Volatility Research: Forecasting and Strategy Backtesting in Python
+# Equity Volatility Research Pipeline
+
+**Strategy Backtesting, Market Regime Analysis, and Forecasting with Out-of-Sample Validation in Python**
 
 This project implements a quantitative research pipeline for US equity volatility, combining time-series analysis, econometric volatility modelling, and supervised learning under out-of-sample validation. It covers return computation from adjusted prices, backtesting of a trend-following strategy with explicit look-ahead-bias and transaction-cost controls, measurement of realized volatility and its persistence structure, and out-of-sample comparison of three volatility forecasting models. Across four equities over 2007–2016, the trend-following strategy underperformed buy-and-hold on every name tested. A Heterogeneous Autoregressive (HAR) volatility forecast, fitted on a purged training split, achieved an out-of-sample RMSE of 9.08% against 9.30% for an EWMA benchmark and 10.28% for a random walk.
 
@@ -122,8 +124,16 @@ The test suite converts each methodological control into an executable assertion
 | Reproducibility | The synthetic foundation reproduces exactly from its seed |
 | Annualization | Volatility scales by √252; geometric return trails arithmetic |
 
+**macOS and Linux**
+
 ```bash
 PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+**Windows PowerShell**
+
+```powershell
+$env:PYTHONPATH="src"; python -m unittest discover -s tests -v
 ```
 
 ## Repository structure
@@ -139,7 +149,12 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 │   ├── volatility.py    Rolling, EWMA, forward and overlapping targets
 │   ├── forecast.py      HAR, purged split, RMSE
 │   └── plots.py         Figure generation
-├── scripts/run_analysis.py
+├── code_layers/
+│   └── research_walkthrough.py   Full analysis in development order
+├── scripts/
+│   ├── run_analysis.py       Full modular pipeline
+│   ├── build_html_report.py  Report generation
+│   └── build_docx_report.py
 ├── tests/test_integrity.py
 ├── data/                Local snapshots for deterministic reproduction
 ├── results/
@@ -148,6 +163,12 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 │   └── figures/
 └── report/              Full research report
 ```
+
+## Two code layers
+
+`code_layers/research_walkthrough.py` preserves the analysis as it was originally developed, in sequence, from first principles. It is the more readable entry point for understanding how the research was built.
+
+`src/equity_volatility/` refactors the same methodology into reusable, tested modules. Both produce identical results.
 
 ## Limitations
 
@@ -161,10 +182,24 @@ Validation depth should precede model complexity: multiple chronological splits,
 
 ## Reproducing
 
+**macOS and Linux**
+
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 PYTHONPATH=src python scripts/run_analysis.py
+```
+
+**Windows PowerShell**
+
+```powershell
+python -m venv .venv
+# Only if PowerShell blocks activation; applies to this session only:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+$env:PYTHONPATH="src"; python scripts/run_analysis.py
 ```
 
 The pipeline writes numerical results to `results/project_results.json`, tables to `results/tables/`, and figures to `results/figures/`. Data is loaded from local snapshots in `data/`; if absent, it is fetched over HTTP and cached.

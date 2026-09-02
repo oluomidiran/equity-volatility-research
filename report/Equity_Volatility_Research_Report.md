@@ -1,5 +1,6 @@
 ---
-title: "Equity Volatility Research: Forecasting and Strategy Backtesting"
+title: "Equity Volatility Research Pipeline"
+subtitle: "Strategy Backtesting, Market Regime Analysis, and Forecasting with Out-of-Sample Validation in Python"
 author: "Oluwaferanmi A. Omidiran"
 geometry: margin=1in
 fontsize: 11pt
