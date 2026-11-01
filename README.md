@@ -79,17 +79,17 @@ Returns exhibit no meaningful autocorrelation; absolute returns and volatility d
 
 ![Autocorrelation](results/figures/05_autocorrelation.png)
 
-**Forecast ranking under both evaluation targets:**
+**Forecast ranking under both evaluation targets** (every model scored on the same dates: those on which all forecasts and the target exist):
 
 | Model | Overlapping target | Forward target |
 |---|---:|---:|
 | Random walk | 2.21% | 13.37% |
 | Historical mean | 14.54% | 15.04% |
-| EWMA, squared returns | 4.04% | 12.04% |
-| EWMA, weighted std, adjust=False | 3.93% | 12.30% |
-| EWMA, weighted std, adjust=True | 3.92% | 12.41% |
+| EWMA, squared returns | 4.04% | 11.99% |
+| EWMA, weighted std, adjust=False | 3.92% | 12.21% |
+| EWMA, weighted std, adjust=True | 3.92% | 12.21% |
 
-The data, models, and code are identical across both columns. Only the evaluation target differs, and the ranking reverses completely.
+The data, models, and code are identical across both columns. Only the evaluation target differs, and the ranking reverses completely: on the forward target, EWMA beats the random walk by 10.3% on the 2,264 dates both cover.
 
 ![Target integrity](results/figures/07_target_integrity.png)
 
@@ -109,7 +109,7 @@ HAR improves on EWMA by 2.34% and on the random walk by 11.70%. Fitted coefficie
 
 ## Research-integrity checks
 
-The test suite converts each methodological control into an executable assertion, so a reviewer can verify the corrections rather than take them on trust. All 15 tests pass.
+The test suite converts each methodological control into an executable assertion, so a reviewer can verify the corrections rather than take them on trust. All 16 tests pass.
 
 | Check | Assertion |
 |---|---|

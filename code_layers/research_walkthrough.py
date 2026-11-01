@@ -472,15 +472,24 @@ print("\n" + "=" * 70)
 print("SESSION 8 — forecast RMSE (%) under both evaluation targets")
 print("=" * 70)
 print(f"  {'model':30} {'trailing':>10} {'forward':>10}")
-for name, forecast in [
-    ("random walk", forecast_random_walk),
-    ("historical mean", forecast_historical_mean),
-    ("EWMA squared returns", forecast_ewma_zero_mean),
-    ("EWMA std, adjust=False", forecast_ewma_recursive),
-    ("EWMA std, adjust=True", forecast_ewma_bias_adjusted),
-]:
-    print(f"  {name:30} {rmse(forecast, target_trailing) * 100:>10.2f} "
-          f"{rmse(forecast, target_forward) * 100:>10.2f}")
+# One table per target: every forecast plus the target, then drop any day with
+# a blank anywhere. EWMA starts on day one but the 21-day random walk needs 21
+# days of history, so this is what puts every model on the same dates.
+forecasts = {
+    "random walk": forecast_random_walk,
+    "historical mean": forecast_historical_mean,
+    "EWMA squared returns": forecast_ewma_zero_mean,
+    "EWMA std, adjust=False": forecast_ewma_recursive,
+    "EWMA std, adjust=True": forecast_ewma_bias_adjusted,
+}
+trailing_clean = pd.DataFrame({**forecasts, "target": target_trailing}).dropna()
+forward_clean = pd.DataFrame({**forecasts, "target": target_forward}).dropna()
+for name in forecasts:
+    print(f"  {name:30} "
+          f"{rmse(trailing_clean[name], trailing_clean['target']) * 100:>10.2f} "
+          f"{rmse(forward_clean[name], forward_clean['target']) * 100:>10.2f}")
+print(f"\n  scored on {len(trailing_clean)} common dates (trailing) "
+      f"and {len(forward_clean)} common dates (forward)")
 
 print("\nUnder the trailing target the random walk appears best by a wide margin.")
 print("Under the forward target the ranking reverses. The data, the models and")

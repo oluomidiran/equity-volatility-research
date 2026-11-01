@@ -270,17 +270,17 @@ All four assets reached maximum 21-day realized volatility within a six-week win
 
 ## 3.5 Forecast comparison
 
-Full-sample RMSE under both evaluation targets:
+RMSE under both evaluation targets. Every model is scored on the same dates, those on which all five forecasts and the target exist (2,284 dates for Target A, 2,264 for Target B), so no model is graded on observations the others never face:
 
 | Model | Target A (overlapping) | Target B (forward) |
 |---|---:|---:|
 | Random walk | 2.21% | 13.37% |
 | Historical mean | 14.54% | 15.04% |
-| EWMA, squared returns | 4.04% | 12.04% |
-| EWMA, weighted std, adjust=False | 3.93% | 12.30% |
-| EWMA, weighted std, adjust=True | 3.92% | 12.41% |
+| EWMA, squared returns | 4.04% | 11.99% |
+| EWMA, weighted std, adjust=False | 3.92% | 12.21% |
+| EWMA, weighted std, adjust=True | 3.92% | 12.21% |
 
-Under Target A the random walk appears superior by a factor of 1.8 over the best EWMA specification. Under Target B the ranking reverses and EWMA outperforms by 9.9%. The data, models, and code are identical; only the evaluation target differs.
+Under Target A the random walk appears superior by a factor of 1.8 over the best EWMA specification. Under Target B the ranking reverses and EWMA outperforms by 10.3%. The data, models, and code are identical; only the evaluation target differs.
 
 ![Forecast ranking under both evaluation targets. The ordering reverses entirely.](../results/figures/07_target_integrity.png)
 
@@ -327,7 +327,7 @@ The explanation is measurement error. The 1-day term is constructed from a singl
 
 ## 4.4 Zero-mean versus estimated-mean variance
 
-Among EWMA variants, the specification assuming zero mean return outperformed both specifications estimating the mean (12.04% against 12.30% and 12.41%). This is consistent with a bias-variance argument. The true daily mean return is small relative to daily variance --- smaller by a factor of approximately 324 in this sample --- so assuming it to be zero introduces negligible bias. Estimating it, by contrast, introduces estimation noise that propagates into every observation. Where the true parameter is close to zero and its estimator is noisy, imposing the restriction dominates estimating it.
+Among EWMA variants, the specification assuming zero mean return outperformed both specifications estimating the mean (11.99% against 12.21% for each). This is consistent with a bias-variance argument. The true daily mean return is small relative to daily variance --- smaller by a factor of approximately 324 in this sample --- so assuming it to be zero introduces negligible bias. Estimating it, by contrast, introduces estimation noise that propagates into every observation. Where the true parameter is close to zero and its estimator is noisy, imposing the restriction dominates estimating it.
 
 ## 4.5 The forecasting stage as a supervised-learning problem
 

@@ -102,5 +102,14 @@ def predict_har(fit, test):
 
 
 def evaluate(forecasts: dict, actual) -> pd.Series:
-    """RMSE for each named forecast against a common target."""
-    return pd.Series({name: rmse(f, actual) for name, f in forecasts.items()})
+    """RMSE for each named forecast against a common target, on common dates.
+
+    Every model is scored on the same dates: those on which the target and
+    every forecast exist. Scoring each model on its own available dates lets a
+    model with a shorter warm-up (EWMA starts on day one; the 21-day random
+    walk does not) be graded on observations the other models never face, so
+    the comparison is no longer like for like.
+    """
+    aligned = pd.DataFrame({**forecasts, "__target__": actual}).dropna()
+    return pd.Series({name: rmse(aligned[name], aligned["__target__"])
+                      for name in forecasts})

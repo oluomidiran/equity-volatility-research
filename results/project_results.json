@@ -236,16 +236,16 @@
     "overlapping_target": {
       "random_walk": 0.022146,
       "historical_mean": 0.14541,
-      "ewma_squared_returns": 0.040417,
-      "ewma_std_adjust_false": 0.039253,
-      "ewma_std_adjust_true": 0.039229
+      "ewma_squared_returns": 0.040398,
+      "ewma_std_adjust_false": 0.039245,
+      "ewma_std_adjust_true": 0.039223
     },
     "forward_target": {
       "random_walk": 0.133723,
       "historical_mean": 0.150433,
-      "ewma_squared_returns": 0.120436,
-      "ewma_std_adjust_false": 0.122968,
-      "ewma_std_adjust_true": 0.124072
+      "ewma_squared_returns": 0.119885,
+      "ewma_std_adjust_false": 0.122132,
+      "ewma_std_adjust_true": 0.122127
     }
   },
   "har": {

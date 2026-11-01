@@ -99,6 +99,20 @@ class TestRMSEAlignment(unittest.TestCase):
         self.assertGreater(forecast.rmse(misaligned, actual), 0.0)
 
 
+class TestCommonDateScoring(unittest.TestCase):
+    """A model comparison must score every model on the same dates."""
+
+    def test_evaluate_scores_only_dates_every_model_covers(self):
+        dates = pd.bdate_range("2024-01-01", periods=10)
+        target = pd.Series(np.zeros(10), index=dates)
+        # Large errors only on the first five dates, which the second model never forecasts.
+        long_history = pd.Series(np.r_[np.full(5, 9.0), np.zeros(5)], index=dates)
+        short_history = pd.Series(np.zeros(5), index=dates[5:])
+        scores = forecast.evaluate({"long": long_history, "short": short_history}, target)
+        self.assertAlmostEqual(scores["long"], 0.0, places=12)
+        self.assertAlmostEqual(scores["short"], 0.0, places=12)
+
+
 class TestSolverAgreement(unittest.TestCase):
     """NumPy and SciPy least squares must return identical coefficients."""
 
